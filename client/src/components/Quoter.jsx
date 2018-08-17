@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-const querystring = require("querystring");
-import Quoter from './components/QuoteAccept';
+import QuoteAccept from './QuoteAccept';
 import '../styles/Quoter.css';
+const querystring = require("querystring");
+
 
 class Quoter extends Component {
 
     state = {
-        results: {}
+        results: 0,
+        quoteHasRun: false
     }
 
     setResults(results) {
@@ -22,7 +24,7 @@ class Quoter extends Component {
     
     let reqObject = {
         originLocation: e.target.origin.value,
-        destinationLocation: e.target.destinations.value,
+        destinationLocation: e.target.destination.value,
         itemDimensions: e.target.dimensions.value,
         itemWeight: e.target.weight.value
 
@@ -30,11 +32,14 @@ class Quoter extends Component {
 
     let stringifiedReqObject = querystring.stringify({reqObject});
 
-    this.props.setResults({});
 
     Axios.get('/api/search?q='+stringifiedReqObject)
         .then((response) => {
-            this.props.setResults(response.data)
+            this.setState({
+                results: response.data,
+                loading: true
+            })
+            
         })
     }
 
@@ -57,9 +62,11 @@ class Quoter extends Component {
                     <input className="textbox" name="weight" type="number" placeholder="Weight"></input>
                     <input className="searchBarButton" type="submit" value="Submit"></input>
                 </form>
-
-
-            <QuoteAccept />
+                {this.state.quoteHasRun ? (
+                    <QuoteAccept setResults={this.setResults.bind(this)}/>
+                ) : (
+                    <div className="noQuoteEmptyDiv"></div>
+                )}
             </div>
         );
     }

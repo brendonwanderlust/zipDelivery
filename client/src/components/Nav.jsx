@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/Nav.css';
+import { Link } from 'react-router-dom';
 import beerMeLogo from '../img/beerpint.png';
 
 class Nav extends Component {
@@ -15,8 +16,8 @@ class Nav extends Component {
 
                     <div className="navigation">
                         <ul className="">
-                                <a href="/">Home</a>
-                                <a href="/Results">Get A Quote!</a>
+                                <Link to="/">Home</Link>
+                                <Link to="/Quoter">Get A Quote!</Link>
                         </ul>
                     </div>
 

@@ -9,6 +9,7 @@ class QuoteAccept extends Component {
                 {/* Create a new form that adds First Name, Last Name,
                 Email Address, and submit. On click of the submit button
                 an email is sent with your delivery details. */}
+                <h1>Hello world!</h1>
             </div>
         );
     }

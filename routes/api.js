@@ -33,12 +33,22 @@ router.get("/search", (req, res) => {
         .get(googleSearchQuery)
         .then(response => {
             console.log("Distance in km = " + response.data.rows[0].elements[0].distance.text);
+            
             function LengthConverter(valNum) {
                 return valNum*0.000621371;
             }
             let distanceInMiles = LengthConverter(response.data.rows[0].elements[0].distance.value);
+            
             console.log("The distance in miles = " + distanceInMiles);
-            return distanceInMiles;
+            
+            wagePerMile = .30;
+            suggestedProfitMargin = 1.3;
+            wageExpense = wageExpense * distanceInMiles;
+            milesPerGallon = 7.75;
+            fuelCostPerGallon = 3.00;
+            fuelExpense = (distanceInMiles / milesPerGallon) * fuelCostPerGallon;
+            let quote = (wageExpense + fuelExpense) * suggestedProfitMargin;
+            res.json(quote)
         })
         .catch(error => {
             console.log(error);
