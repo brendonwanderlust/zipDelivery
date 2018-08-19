@@ -8,7 +8,7 @@ const querystring = require("querystring");
 class Quoter extends Component {
 
     state = {
-        results: 0,
+        results: {},
         quoteHasRun: false
     }
 
@@ -21,8 +21,10 @@ class Quoter extends Component {
     handleSubmit(e) {
     e.preventDefault();
     console.log(e.target.origin.value);
+    console.log(e.target.destination.value);
     
     let reqObject = {
+        blank: "blank",
         originLocation: e.target.origin.value,
         destinationLocation: e.target.destination.value,
         itemDimensions: e.target.dimensions.value,
@@ -30,17 +32,19 @@ class Quoter extends Component {
 
     }
 
-    let stringifiedReqObject = querystring.stringify({reqObject});
+    let stringifiedReqObject = querystring.stringify(reqObject);
 
+    console.log(stringifiedReqObject);
 
     Axios.get('/api/search?q='+stringifiedReqObject)
         .then((response) => {
             this.setState({
                 results: response.data,
-                loading: true
+                quoteHasRun: true
             })
-            
+            console.log(response.data);
         })
+        
     }
 
     render() {
@@ -63,7 +67,7 @@ class Quoter extends Component {
                     <input className="searchBarButton" type="submit" value="Submit"></input>
                 </form>
                 {this.state.quoteHasRun ? (
-                    <QuoteAccept setResults={this.setResults.bind(this)}/>
+                    <QuoteAccept results={this.state.results} setResults={this.setResults.bind(this)}/>
                 ) : (
                     <div className="noQuoteEmptyDiv"></div>
                 )}

@@ -1,19 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700,900');
-
 .navbar {
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
-    background-color: rgba(243, 243, 241, 1);
+    background-color: white;
     color: rgba(30, 30, 30, 1);
     display: flex;
     align-items: center;
-  /* position: fixed; */
-    background-color: rgba(243, 243, 241, 1);
+    /* position: fixed; */
     border-bottom: 1px solid rgba(140, 129, 121, 1);
     height: 4rem;
     width: 100%;
-  /* margin-bottom: 1rem; */
-  /*top: -10px;*/
+    /* margin-bottom: 1rem; */
+    /*top: -10px;*/
 }
 
 .header-main {
@@ -33,9 +31,7 @@
 .companyText {
     margin-left: 1rem;
     font-size: 2rem;
-    color: goldenrod;
-    letter-spacing: 2px;
-    text-shadow: -.75px 0 black, 0 .75px black, .75px 0 black, 0 -.75px black;
+    color: black;
 }
 
 .navigation a {
@@ -54,47 +50,50 @@
     transition: font-weight .25s ease-out;
 }
 
-.NavBeerMeLogo:hover {
-    animation: App-logo-spin infinite 2s linear;
+.AppNavImg {
+    /* animation: App-logo-spin infinite 2s linear; */
+    width: 4rem;
+    height: 4rem;
+}
+
+.companyText {
+    font-size: 1.8rem;
 }
 
 @media only screen and (max-width: 500px) {
-
     .companyText {
         display: none;
     }
-
     .mobile-header-icons {
         display: initial
     }
-
+    .AppNavImg {
+        /* animation: App-logo-spin infinite 2s linear; */
+        width: 4rem;
+        height: 4rem;
+    }
 }
 
 @media only screen and (min-width: 1400px) {
-
     .navbar {
         height: 6rem;
     }
-
     .companyText {
         font-size: 3rem;
     }
-
     .navigation a {
         padding-left: 1.5rem;
         font-size: 1.7rem;
     }
-
     .AppNavImg {
-      /* animation: App-logo-spin infinite 2s linear; */
-        width: 4rem; 
+        /* animation: App-logo-spin infinite 2s linear; */
+        width: 4rem;
         height: 4rem;
     }
     NavBeerMeLogo img {
         font-size: 5rem;
-        width: 4rem; 
+        width: 4rem;
         height: 4rem;
         max-width: 100%;
     }
-
 }

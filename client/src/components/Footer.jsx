@@ -7,7 +7,7 @@ class Footer extends Component {
             <div className="Footer">
                 <footer>
                     {/* This is the Footer */}
-                    <h1>Coming Soon</h1>
+                    <h1>FOOTER Coming Soon</h1>
                 </footer>
             </div>    
         )    

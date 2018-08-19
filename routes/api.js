@@ -3,23 +3,19 @@ const router = express.Router();
 const axios = require("axios");
 const querystring = require("querystring");
 
-router.get('/', (req, res) => {
-    res.send('hello world');
-})
-
 router.get("/search", (req, res) => {
 
-    let parsedRequest = querystring.parse(req);
-
     // Build the Google Distance Matrix API search query
-    let origin = ["Atlanta"]; //[`${parsedRequest.origin}`]; 
-    let destination = ["Seattle"]; //[`${parsedRequest.destination}`]; 
+    let origin = [`${req.query.originLocation}`];
+    let destination = [`${req.query.destinationLocation}`];
     let googleSearchQuery = querystring.stringify({
         origins: origin,
         destinations: destination,
         travelMode: 'DRIVING',
         key: process.env.GOOGLE_API_KEY
     });
+
+    console.log(origin, destination);
 
     googleSearchQuery =
         "https://maps.googleapis.com/maps/api/distancematrix/json?" +
@@ -32,23 +28,25 @@ router.get("/search", (req, res) => {
     axios
         .get(googleSearchQuery)
         .then(response => {
+            // console.log(response);
             console.log("Distance in km = " + response.data.rows[0].elements[0].distance.text);
-            
+
             function LengthConverter(valNum) {
-                return valNum*0.000621371;
+                return valNum * 0.000621371;
             }
             let distanceInMiles = LengthConverter(response.data.rows[0].elements[0].distance.value);
-            
+
             console.log("The distance in miles = " + distanceInMiles);
-            
-            wagePerMile = .30;
-            suggestedProfitMargin = 1.3;
-            wageExpense = wageExpense * distanceInMiles;
-            milesPerGallon = 7.75;
-            fuelCostPerGallon = 3.00;
-            fuelExpense = (distanceInMiles / milesPerGallon) * fuelCostPerGallon;
+
+            let wagePerMile = .30;
+            let suggestedProfitMargin = 1.3;
+            let wageExpense = wagePerMile * distanceInMiles;
+            let milesPerGallon = 7.75;
+            let fuelCostPerGallon = 3.00;
+            let fuelExpense = (distanceInMiles / milesPerGallon) * fuelCostPerGallon;
             let quote = (wageExpense + fuelExpense) * suggestedProfitMargin;
-            res.json(quote)
+            let roundedQuote = Math.round(quote * 100) / 100;
+            res.json(roundedQuote)
         })
         .catch(error => {
             console.log(error);
@@ -58,7 +56,5 @@ router.get("/search", (req, res) => {
             });
         });
 });
-
-
 
 module.exports = router;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/Nav.css';
 import { Link } from 'react-router-dom';
-import beerMeLogo from '../img/beerpint.png';
+import zipDeliveryLogo from '../img/logo-lala.png';
 
 class Nav extends Component {
     render() {
@@ -10,8 +10,8 @@ class Nav extends Component {
                 <div className="header-main">
 
                     <div className="logo">
-                        <a className="NavBeerMeLogo" href=""><img className="AppNavImg" src={beerMeLogo} alt="BeerMe! logo"></img></a>
-                        <span className="p-3 companyText">Zip Delivery</span>                    
+                        <a className="NavBeerMeLogo" href=""><img className="AppNavImg" src={zipDeliveryLogo} alt="ZipDelivery logo"></img></a>
+                        <span className="p-3 companyText">ZipDelivery</span>                    
                     </div>
 
                     <div className="navigation">
