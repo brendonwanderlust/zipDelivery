@@ -6,7 +6,7 @@ import '../styles/QuoteAccept.css';
 class QuoteAccept extends Component {
 
     state = {
-        message: ''
+        message: '',
     }
 
     setMessage(message) {
@@ -16,13 +16,16 @@ class QuoteAccept extends Component {
     }
 
     resetForm() {
-        document.getElementById('AcceptQuoteForm').reset();
+        document.getElementById('formContainer').reset();
+        document.getElementById('quoteForm').reset();
+        this.props.setQuoteHasRun();
+        // this.props.setQuoteHasRun();
     }
 
     QuoteAcceptHandleSubmit(e) {
         e.preventDefault();
         console.log("So far");
-        console.log("So good"); 
+        console.log("So good");
 
         const fName = e.target.FirstName.value;
         const lName = e.target.LastName.value;
@@ -32,27 +35,28 @@ class QuoteAccept extends Component {
 
 
         Axios.post('/email/email', {
-            firstName: fName,   
-            lastName: lName,  
+            firstName: fName,
+            lastName: lName,
             email: eMail,
             message: message
         })
-        .then((response)=>{
-            console.log(response);
-            console.log(response.request.statusText);
-            if (response.request.statusText === 'OK'){
-                this.setState({
-                    message: response.data.message
-                })
-                console.log(this.state.message)
-                alert("Message Sent."); 
-                this.resetForm();
-            }else if(response.data.msg === 'fail'){
-                alert("Message failed to send.")
-            }
-        })}
+            .then((response) => {
+                console.log(response);
+                console.log(response.request.statusText);
+                if (response.request.statusText === 'OK') {
+                    this.setState({
+                        message: response.data.message
+                    })
+                    console.log(this.state.message)
+                    alert("Message Sent.");
+                    this.resetForm();
+                } else if (response.data.msg === 'fail') {
+                    alert("Message failed to send.")
+                }
+            })
+    }
 
-    
+
 
     render() {
         console.log(this.props.results);
@@ -61,19 +65,23 @@ class QuoteAccept extends Component {
                 {/* Create a new form that adds First Name, Last Name,
                 Email Address, and submit. On click of the submit button
                 an email is sent with your delivery details. */}
-                
-                <form id="AcceptQuoteForm" onSubmit={this.QuoteAcceptHandleSubmit.bind(this)} method="POST"> 
-                    <h1 className="QuoteHeader">Consider it Delivered! Your Total = <span id="Quote">{this.props.results}</span></h1>
-                    <input className="textbox" name="FirstName" type="text" placeholder="First Name"></input>
-                    <input className="textbox" name="LastName" type="text" placeholder="Last Name"></input>
-                    <input className="textbox" name="EmailAddress" type="email" placeholder="Email Address"></input>
-                    <input className="SubmitButton" type="submit" value="Send Me My Quote!"></input>
-                </form>
-                {this.state.message ? (
-                    <div className="modalDiv"><span id="ResponseMessage">{this.state.message}</span></div>
-                ) : (
-                    <div className="noQuoteEmptyDiv"></div>
-                )}
+
+                <div className="formContainer-Quoter">
+                    <h1 className="QuoteHeader">Consider it Delivered! Your Total: <span id="Quote"><strong>${this.props.results}</strong></span></h1>
+                    <p>Want your quote emailed to you? Submit the form below.</p>
+                    <form id="formContainer" onSubmit={this.QuoteAcceptHandleSubmit.bind(this)} method="POST"><br />
+                        <input className="textbox" name="FirstName" type="text" placeholder="First Name"></input>
+                        <input className="textbox" name="LastName" type="text" placeholder="Last Name"></input><br></br>
+                        <input className="textbox" name="EmailAddress" type="email" placeholder="Email Address"></input><br></br>
+                        <input className="submitAcceptBtn" type="submit" value="Send Me My Quote!"></input>
+                    </form>
+                    {this.state.message ? (
+                        <div className="modalDiv"><span id="ResponseMessage">{this.state.message}</span></div>
+                    ) : (
+                            <div className="noQuoteEmptyDiv"></div>
+                        )}
+                </div>
+
 
 
             </div>

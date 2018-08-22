@@ -1,0 +1,64 @@
+@media only screen and (min-width: 1500px) {
+    .Quoter {
+        margin-top: 10rem;
+        margin-bottom: 7rem;
+    }
+
+    .textbox {
+        height: 4vw;
+        width: 30vw;
+        text-align: center;
+        font-size: 1.5vw;
+        border-radius: 10px;
+        margin: .5rem 1rem;
+    }
+
+    .quoteForm h1 {
+        color: black;
+        margin: 0;
+        text-align: center left;
+    }
+
+    .formContainer {
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        width: 70%;
+        margin: 0 auto;
+        padding: 2.0vw; 
+        background-color: rgba(222, 222, 222, 0.678)
+    }
+
+    .QuoteHeader {
+        display: block;
+        margin-bottom: 0;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .submitAcceptBtn {
+        background-color: #f18622;
+        height: 4vw;
+        width: 20vw;
+        text-align: center;
+        font-size: 1.5vw;
+        border-radius: 10px;
+        margin: 1rem 1rem;
+    }
+
+    .submitAcceptBtn:hover {
+        background-color: #f186227c;
+        transition: background-color .6s ease;
+    }
+}
+
+@media only screen and (max-width: 1500px) and (min-width: 500px) {
+    
+}
+
+@media only screen and (max-width: 500px) {
+    
+}
+

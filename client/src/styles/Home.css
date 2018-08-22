@@ -1,0 +1,203 @@
+@media only screen and (min-width: 1500px) {
+    .banner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        height: 850px;
+        width: 80%;
+        margin-top: 10rem;
+        margin-bottom: 4rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .imageOne {
+        flex-shrink: 0;
+        min-width: 100%;
+        min-height: 100%
+    }
+    .imageTwo {
+        display: none;
+    }
+    .banner h1 {
+        position: absolute;
+        font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
+        font-size: 5rem;
+        text-align: left;
+        width: 850px;
+        top: 250px;
+        left: 320px;
+    }
+    .banner h2 {
+        position: absolute;
+        font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
+        font-size: 1.8rem;
+        text-align: left;
+        width: 850px;
+        top: 475px;
+        left: 320px;
+    }
+    .RequestQuoteBtn {
+        position: absolute;
+        font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
+        font-size: 1.7rem;
+        width: 325px;
+        height: 100px;
+        top: 550px;
+        left: 320px;
+        border-radius: 5px;
+        line-height: normal;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        outline: 0;
+        display: inline-block;
+        font-weight: 700;
+        font-style: normal;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        color: #fff !important;
+        background-color: #f16622;
+        border-color: #f16622;
+        padding: 21px 34px;
+    }
+    .RequestQuoteBtn:hover {
+        background-color: #f1672288;
+        border-color: #f1672210;
+        transition: background-color .6s ease;
+    }
+    .benefitSection {
+        background-color: white;
+        margin: 0rem auto 4rem auto;
+        width: 80%;
+        padding: 2rem 0rem 2rem 0rem;
+    }
+    .threeBenefitWrapper {
+        display: flex;
+        justify-content: center;
+    }
+    .custom-three-col {
+        display: flex;
+        /* nested flex container */
+        flex-direction: column;
+        /* vertical alignment of flex items */
+        justify-content: center;
+        /* center flex items vertically */
+        align-items: center;
+        width: 30%;
+    }
+    .custom-three-col img {
+        width: 120px;
+        height: auto;
+        max-width: 120px 100vw, 120px;
+    }
+    .custom-three-col p {
+        width: 80%;
+        text-align: center;
+    }
+
+    .howItWorksImgContainer {
+        overflow: hidden;
+        width: 80%;
+        margin: 0rem auto 0rem auto;
+    }
+    howItWorksImgContainer img {
+        overflow: hidden;
+        margin: 0rem auto 0rem auto;
+        width: auto;
+    }
+}
+
+@media only screen and (max-width: 500px) {}
+
+@media only screen and (max-width: 1500px) and (min-width: 500px) {
+    .banner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        height: auto;
+        width: 80%;
+        margin: 2rem auto;
+    }
+    .imageOne {
+        display: none;
+    }
+    .imageTwo {
+        flex-shrink: 0;
+        min-width: 100%;
+        min-height: 100%
+    }
+    .banner h1 {
+        position: absolute;
+        font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
+        font-size: 3rem;
+        width: 400px;
+        top: 6rem;
+        left: 4rem;
+    }
+
+    .howItWorksImgContainer {
+        overflow: hidden;
+        width: 80%;
+        margin: 0rem auto 0rem auto;
+    }
+
+    howItWorksImgContainer img {
+        overflow: hidden;
+        margin: 0rem auto 0rem auto;
+        width: auto;
+    }
+
+}
+
+@media only screen and (min-width: 1800px) {
+    .banner h1 {
+        position: absolute;
+        font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
+        font-size: 5rem;
+        text-align: left;
+        width: 850px;
+        top: 250px;
+        left: 500px;
+    }
+    .banner h2 {
+        position: absolute;
+        font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
+        font-size: 1.8rem;
+        text-align: left;
+        width: 850px;
+        top: 475px;
+        left: 500px;
+    }
+    .RequestQuoteBtn {
+        position: absolute;
+        font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
+        font-size: 1.7rem;
+        width: 325px;
+        height: 100px;
+        top: 550px;
+        left: 500px;
+        border-radius: 5px;
+        line-height: normal;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        outline: 0;
+        display: inline-block;
+        font-weight: 700;
+        font-style: normal;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        color: #fff !important;
+        background-color: #f16622;
+        border-color: #f16622;
+        padding: 21px 34px;
+    }
+
+    howItWorksImgContainer img {
+        overflow: hidden;
+        margin: 0rem auto 0rem auto;
+        width: auto;
+    }
+}

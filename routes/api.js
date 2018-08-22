@@ -38,14 +38,51 @@ router.get("/search", (req, res) => {
 
             console.log("The distance in miles = " + distanceInMiles);
 
-            let wagePerMile = .30;
-            let suggestedProfitMargin = 1.3;
-            let wageExpense = wagePerMile * distanceInMiles;
-            let milesPerGallon = 7.75;
-            let fuelCostPerGallon = 3.00;
-            let fuelExpense = (distanceInMiles / milesPerGallon) * fuelCostPerGallon;
-            let quote = (wageExpense + fuelExpense) * suggestedProfitMargin;
-            let roundedQuote = Math.round(quote * 100) / 100;
+            function quote() {
+                let quote = 0
+                let wagePerMile = .30;
+                let wageExpense = wagePerMile * distanceInMiles;
+                let milesPerGallon = 7.75;
+                let fuelCostPerGallon = 3.00;
+                let fuelExpense = (distanceInMiles / milesPerGallon) * fuelCostPerGallon;
+                let margins = [1.3, 1.5, 1.7, 1.9]
+
+                function costPlusQuote() {
+                    if (distanceInMiles >= 100) {
+                        quote = (wageExpense + fuelExpense) * margins[3];
+                        return quote
+                    } else if (distanceInMiles >= 500) {
+                        quote = (wageExpense + fuelExpense) * margins[2];
+                        return quote
+                    } else if (distanceInMiles >= 1000) {
+                        quote = (wageExpense + fuelExpense) * margins[1];
+                        return quote
+                    } else {
+                        quote = (wageExpense + fuelExpense) * margins[0];
+                        return quote
+                    }
+                }
+
+                if (distanceInMiles < 20) {
+                    quote = 69.98
+                    return quote
+                } else if (distanceInMiles < 40) {
+                    quote = 99.98
+                    return quote
+                } else if (distanceInMiles < 60) {
+                    quote = 129.98
+                    return quote
+                } else if (distanceInMiles < 100) {
+                    quote = 179.98
+                    return quote
+                } else if (distanceInMiles >= 100) {
+                    quote = costPlusQuote()
+                    return quote
+                }
+            }
+
+
+            let roundedQuote = Math.round(quote() * 100) / 100;
             res.json(roundedQuote)
         })
         .catch(error => {

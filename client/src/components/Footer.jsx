@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/Footer.css';
+import PoweredByGoogle from "../img/powered_by_google.png";
 
 class Footer extends Component {
     render() {
@@ -7,7 +8,7 @@ class Footer extends Component {
             <div className="Footer">
                 <footer>
                     {/* This is the Footer */}
-                    <h1>FOOTER Coming Soon</h1>
+                    <img src={PoweredByGoogle} alt="Powered By Google"/>
                 </footer>
             </div>    
         )    
