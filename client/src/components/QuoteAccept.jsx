@@ -19,7 +19,6 @@ class QuoteAccept extends Component {
         document.getElementById('formContainer').reset();
         document.getElementById('quoteForm').reset();
         this.props.setQuoteHasRun();
-        // this.props.setQuoteHasRun();
     }
 
     QuoteAcceptHandleSubmit(e) {
@@ -32,9 +31,7 @@ class QuoteAccept extends Component {
         const eMail = e.target.EmailAddress.value;
         const message = "Your quote is " + document.getElementById('Quote').innerHTML;
 
-
-
-        Axios.post('/email/email', {
+        Axios.post('/email', {
             firstName: fName,
             lastName: lName,
             email: eMail,
@@ -50,24 +47,18 @@ class QuoteAccept extends Component {
                     console.log(this.state.message)
                     alert("Message Sent.");
                     this.resetForm();
-                } else if (response.data.msg === 'fail') {
+                } else if (response.data.message === 'fail') {
                     alert("Message failed to send.")
                 }
             })
     }
 
-
-
     render() {
         console.log(this.props.results);
         return (
             <div className="QuoteAccept">
-                {/* Create a new form that adds First Name, Last Name,
-                Email Address, and submit. On click of the submit button
-                an email is sent with your delivery details. */}
-
                 <div className="formContainer-Quoter">
-                    <h1 className="QuoteHeader">Consider it Delivered! Your Total: <span id="Quote"><strong>${this.props.results}</strong></span></h1>
+                    <h1 className="QuoteHeader">Consider it Delivered! Your Total: <span id="Quote">${this.props.results}</span></h1>
                     <p>Want your quote emailed to you? Submit the form below.</p>
                     <form id="formContainer" onSubmit={this.QuoteAcceptHandleSubmit.bind(this)} method="POST"><br />
                         <input className="textbox" name="FirstName" type="text" placeholder="First Name"></input>
@@ -81,13 +72,9 @@ class QuoteAccept extends Component {
                             <div className="noQuoteEmptyDiv"></div>
                         )}
                 </div>
-
-
-
             </div>
         );
     }
 }
-
 
 export default QuoteAccept;

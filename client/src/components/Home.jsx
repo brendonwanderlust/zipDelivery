@@ -15,9 +15,9 @@ class Home extends Component {
             <div className="Home">
                 {/* This is the landing page */}
                 <div className="banner">
-                    <img className="imageOne" src={BannerImageOne} alt="Image one" />
-                    <img className="imageTwo" src={BannerImageTwo} alt="Image Two" />
-                    <h1>Deliver Anything Locally in 55 Minutes!</h1>
+                    <img className="imageOne" src={BannerImageOne} alt="Large Banner" />
+                    <img className="imageTwo" src={BannerImageTwo} alt="Medium Banner" />
+                    <h1>Furniture Delivered Locally in 55 Minutes!</h1>
                     <h2>Request and Track Deliveries from a Smartphone or Desktop.</h2>
                     <button className="RequestQuoteBtn">Request a Quote</button>
                 </div>
