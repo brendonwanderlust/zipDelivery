@@ -21,8 +21,8 @@ router.get("/search", (req, res) => {
 
     console.log("Your Query String is: " + googleSearchQuery);
 
-    // Search Google for the distances and then convert
-    // the distance from meters to miles. 
+    // Search Google for the distances and use the response to make the
+    // delivery calculation
     axios
         .get(googleSearchQuery)
         .then(response => {
