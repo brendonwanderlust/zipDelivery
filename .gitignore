@@ -4,3 +4,4 @@ node_modules
 .eslintrc.*
 credentials.json
 token.json
+package-lock.json
